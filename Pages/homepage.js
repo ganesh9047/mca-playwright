@@ -23,7 +23,10 @@ export class MCAhomepage{
 
     async menupage(){
         await this.page.locator(homepagelocators.navMenu).click();
-        await expect(this.page.locator(homepagelocators.ordernowbutton)).toBeVisible();
+        await expect(this.page.getByText('ORDER NOW', { exact: true })).toBeVisible();
+
+        // await this.page.locator(homepagelocators.ordernowbutton).scrollIntoViewIfNeeded();
+        // await expect(this.page.locator(homepagelocators.ordernowbutton)).toBeVisible();
     }
 
     async rewardspage(){

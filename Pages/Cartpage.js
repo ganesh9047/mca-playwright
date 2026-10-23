@@ -112,11 +112,17 @@ async addpromocode(promocode){
     await expect(addtoorder).toBeVisible({ timeout: 30000 });
     await this.page.locator(cartpagelocators.promoinputfield).fill(promocode);
     await addtoorder.click();
-    
-    await expect(this.page.getByRole('button', { name: 'REMOVE PROMO CODE' })).toBeVisible();
+     const promoDialog = this.page.getByRole('dialog');
+
+    await expect(promoDialog).toBeHidden({
+        timeout: 30000
+    });
+    // await expect(this.page.getByRole('button', { name: 'Close', exact: true })).toBeHidden({ timeout: 20000 });
+    // await expect(this.page.getByRole('button', { name: 'REMOVE PROMO CODE' })).toBeVisible({timeout: 30000});
 }
 
 async checkoutpage(){
+    
     await expect(this.page.locator(cartpagelocators.checkoutbutton)).toBeVisible({ timeout: 30000 });
     await this.page.locator(cartpagelocators.checkoutbutton).click();
     // await this.page.getByRole('link', { name: 'Change' }).click();

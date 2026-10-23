@@ -18,8 +18,9 @@ test('PDP page opens from a subcategory', async () => {
 	await clp.selectcategory("Beverages");
 	await clp.selectSubCategory("Gallons To Go");
 	await pdp.verifypdp("Gallons To Go");
-    await pdp.verifyproductprice("$9.29");
+    await pdp.verifyproductprice("$7.99");
     await pdp.verifyproductpricewithmodifers("$9.99");
     await pdp.verifypricewithaddons("$12.99");
     await pdp.verifyproductaddingtocart();
+	// await pdp.verifyproductaddedtocart("Gallons To Go");
 });

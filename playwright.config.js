@@ -101,7 +101,7 @@ export default defineConfig({
     // If a test fails, don't automatically run it again.
     retries: 0,
 
-    workers: 2,
+    workers: 1,
 
     // We added two reporting formats.
     reporter: [

@@ -61,6 +61,11 @@ test('beverages page is accessible from homepage', async () => {
 
 test("filllocation", async() => {
 	test.setTimeout(90000);
-	await homepage.locationspage("Roswell, GA, USA", "1555 Holcomb Bridge Rd");
+
+	// roswell store
+	// await homepage.locationspage("Roswell, GA, USA", "1555 Holcomb Bridge Rd");
+
+	// Saxton store
+	await homepage.locationspage("Guam", "Saxton Demo Vendor (721)");
 
 	})

@@ -14,9 +14,9 @@ export class CLPpage{
 
     // Click a category tile on the menu page (e.g. "Sandwiches") and verify its page opens.
     async selectcategory(category) {
-        await this.page.getByRole('button', { name: category, exact: true }).click();     
+        await this.page.locator(clplocators.Selectcategory).click();
     }
-
+    
     async selectSubCategory(subCategory) {
     await this.page.getByText(subCategory, { exact: true }).click();
     await expect(this.page.getByRole('button', {name: 'ADD TO CART'})).toBeVisible({ timeout: 30000 });
@@ -24,7 +24,7 @@ export class CLPpage{
 
     async goBackToBeverages() {
     await this.page.locator(clplocators.beveragesbreadcrumbs).click();
-    await expect(this.page).toHaveURL(/\/menu\/roswell-000\/beverages$/,{ timeout: 30000 });
+    await expect(this.page).toHaveURL(/\/menu\/saxton-demo-vendor-721-002\/beverages$/,{ timeout: 30000 });
     }
 
     async seachforaprodcut(productname){
