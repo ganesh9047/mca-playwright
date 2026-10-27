@@ -15,7 +15,7 @@ test('MCA Login', async ({ page, mcaLogin }) => {
     );
     await expect(page.locator(homepagelocators.profileicon)).toBeVisible({ timeout: 30 * 1000 });
     const cartpage = new Cartpage(page);
-    await cartpage.clearExistingCart();
+    await cartpage.clearExistingCart("Guam", "Saxton Demo Vendor (721)");
 
     await expect(page.locator(homepagelocators.profileicon)).toBeVisible({ timeout: 30 * 1000 });
 

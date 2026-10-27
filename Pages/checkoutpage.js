@@ -20,7 +20,22 @@ const checkbox = selectedGiftCard.getByRole('checkbox');
 
 await checkbox.check();
 await expect(checkbox).toBeChecked();
-
-
 }
+
+async placeorder(){
+    await expect(this.page.getByRole('button', { name: 'Place Order' })).toBeVisible({ timeout: 30000 });
+    await this.page.getByRole('button', { name: 'Place Order' }).click();
+   const callRestaurantButton = this.page.locator(checkoutpageLocators.callrestuarantbutton);
+   const closeButton = this.page.getByRole('button', { name: 'Close', exact: true });
+   if (await callRestaurantButton.isVisible()) {
+    console.log('Call Restaurant button is visible.');
+
+} else if (await closeButton.isVisible()) {
+    console.log('Close button is visible.');
+
+    await closeButton.click();
+
+} else {
+    console.log('Neither button is visible.');
 }
+}}

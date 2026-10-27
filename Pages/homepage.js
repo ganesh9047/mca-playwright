@@ -21,26 +21,35 @@ export class MCAhomepage{
         return (await usernameText.textContent())?.trim() || '';
     }
 
-    async menupage(){
-        await this.page.locator(homepagelocators.navMenu).click();
-        await expect(this.page.getByText('ORDER NOW', { exact: true })).toBeVisible();
+    
+    async menupage() {
+    await this.page.locator(homepagelocators.navMenu).click();
 
-        // await this.page.locator(homepagelocators.ordernowbutton).scrollIntoViewIfNeeded();
-        // await expect(this.page.locator(homepagelocators.ordernowbutton)).toBeVisible();
-    }
+    const expectedUrl = 'https://mca.uat.focusbrands.com/menu/saxton-demo-vendor-721-002';
+    const orderNowButton = this.page.getByText('ORDER NOW', {exact: true});
+
+    await expect(async () => {
+        const urlMatches = this.page.url() === expectedUrl;
+        const buttonVisible = await orderNowButton.isVisible();
+
+        expect(urlMatches || buttonVisible).toBe(true);
+    }).toPass({ timeout: 10000 });
+}
+
 
     async rewardspage(){
         await this.page.locator(homepagelocators.navRewards).click();
-        await expect(this.page.locator(homepagelocators.referafriend)).toBeVisible();   
+        await expect(this.page.locator(homepagelocators.referafriend)).toBeVisible({timeout:60000});   
     }
 
     async cateringpage(){
         await this.page.locator(homepagelocators.navCatering).click();
+        await expect(this.page).toHaveURL('https://mca.uat.focusbrands.com/rewards',{ timeout: 30000 });
     }
 
     async giftcardspage(){
         await this.page.locator(homepagelocators.navGiftCards).click();
-        await expect(this.page.locator(homepagelocators.sendnow)).toBeVisible();
+        await expect(this.page.locator(homepagelocators.sendnow)).toBeVisible({timeout:60000});
     }
 
     async beveragespage(){

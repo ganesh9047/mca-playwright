@@ -10,4 +10,5 @@ test.beforeEach(async ({ page }) => {
 
 test('checkoutpage', async () => {
     await checkoutpage.checkoutpage();
+    await checkoutpage.placeorder();
     });

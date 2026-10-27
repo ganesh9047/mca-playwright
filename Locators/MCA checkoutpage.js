@@ -3,4 +3,5 @@ export const checkoutpageLocators = {
     changelocation:'[data-testid="checkout_change_address"]',
     addtocartbutton: "#link_cart",
     checkoutbutton:"#cart_checkout_button",
+    callrestuarantbutton: "#btn_callRestaurant",
 }
