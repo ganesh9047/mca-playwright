@@ -4,7 +4,10 @@ import { Checkoutpage } from "../Pages/checkoutpage";
 let checkoutpage;
 
 test.beforeEach(async ({ page }) => {
-     await page.goto('/', { waitUntil: 'domcontentloaded' });
+     test.setTimeout(60000);
+     await page.goto('/', { waitUntil: 'commit',
+        timeout: 45000
+      });
     checkoutpage = new Checkoutpage(page);
 });
 

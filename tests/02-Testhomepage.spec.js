@@ -28,7 +28,11 @@ import { MCAhomepage } from "../Pages/homepage";
 let homepage;
 
 test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/', {
+        waitUntil: 'domcontentloaded',
+        timeout: 60000
+    });
+
     homepage = new MCAhomepage(page);
 });
 
